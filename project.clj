@@ -41,9 +41,11 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/trade_repl.js"
-                           :main trade-repl.core
-                           :optimizations :advanced
+                :compiler {:main trade-repl.core
+                           :asset-path "js/compiled/out_dir"
+                           :output-to "resources/public/js/compiled/trade_repl.js"
+                           :output-dir "resources/public/js/compiled/out_dir"
+                           :optimizations :none ;;:advanced
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
