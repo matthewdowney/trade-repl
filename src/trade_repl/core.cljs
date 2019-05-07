@@ -2,17 +2,17 @@
   "Very rough first draft. 
 
   The idea is that there's textual input, which is parsed into tabular data for display in one
-  table and is then sumamrized in another."
-    (:require [reagent.core :as reagent]
-              [keybind.core :as k]
-              [cljs.reader :as reader]
-              [goog.crypt.base64 :as b64]
-              [decimal.core :as dc]
-              [cljs.js :refer [eval empty-state js-eval]]
-              [cljs.pprint :as pprint]
-              [clojure.core.match :as shape]
-              [clojure.walk :as walk]
-              [clojure.string :as string]))
+  table and is then summarized in another."
+  (:require [reagent.core :as reagent]
+            [keybind.core :as k]
+            [cljs.reader :as reader]
+            [goog.crypt.base64 :as b64]
+            [decimal.core :as dc]
+            [cljs.js :refer [eval empty-state js-eval]]
+            [cljs.pprint :as pprint]
+            [clojure.core.match :as shape]
+            [clojure.walk :as walk]
+            [clojure.string :as string]))
 
 (enable-console-print!)
 
@@ -24,7 +24,6 @@
      :display-data []        ;; Tabular data for line by line display.
      :showing :display       ;; Whether to show :display-data or :parsed-data
      :summarize-by :venue})) ;; Whether to summarize trades by group or venue.
-
 
 ;;;
 ;;; Preprocessing logic for :input-text that replaces "; ( ... ) => " lines 
@@ -228,9 +227,7 @@
           ^{:key idx} 
           [:th {:width (get col->width col "200")} (str col)])]]
       [:tbody
-       (let [;; Each item has to have a unique :key (some react.js implementation detail)
-             table-data' (map-indexed #(assoc %2 :key %1) table-data)
-             ;; We're going to group rows vertically by the `group-on` attribute.
+       (let [;; We're going to group rows vertically by the `group-on` attribute.
              grouped (partition-by #(get % group-on nil) table-data)]
          (mapcat 
            (fn [g-idx group] 
@@ -357,7 +354,6 @@
   (let [{:keys [input-text showing parsed-data display-data summarize-by] :as state} @app-state
         link-style {:float "right" :fontSize "12px" :padding "0px" :margin-left "10px" :background "none", 
                     :color "blue", :border "none", :font "inherit", :cursor "pointer"}
-        explanation {:margin 0, :color "#c7ccd0"}
         update-editor (fn [{:keys [key-map]}]
                         (some-> @inst (.setOption "vimMode" (= "vim" key-map))))]
 
@@ -365,7 +361,6 @@
     (k/bind! 
       "alt-v" ::vim-trigger 
       #(update-editor (swap! app-state update :key-map {"vim" "default" "default" "vim"})))
-
 
     [:div {:style {:width "100%" :height "100%" :padding "0px" :display "inline-flex"}}
      [:div
@@ -391,7 +386,7 @@
               :style link-style
               :value (if (= showing :display) "show parsed input" "show rendered input")
               :on-click #(swap! app-state update :showing {:display :parsed :parsed :display})}]
-     [:a {:href (str "/?content=" (b64/encodeString input-text)) :style link-style} "link to this scratchpad"]
+     [:a {:href (str "?content=" (b64/encodeString input-text)) :style link-style} "link to this scratchpad"]
      [table 
       (if (= showing :display) display-data (walk/postwalk (fn [x] (if-not (coll? x) (str x) x)) parsed-data))
       {:col->width {"Desc" "400"}

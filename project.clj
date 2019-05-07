@@ -14,6 +14,7 @@
   :plugins [[lein-figwheel "0.5.16"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
   :source-paths ["src"]
+  :aliases {"gh-pages" ["run" "-m" "trade-repl.copy"]}
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src"]
@@ -45,7 +46,7 @@
                            :asset-path "js/compiled/out_dir"
                            :output-to "resources/public/js/compiled/trade_repl.js"
                            :output-dir "resources/public/js/compiled/out_dir"
-                           :optimizations :none ;;:advanced
+                           :optimizations :simple
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
@@ -100,5 +101,4 @@
                    ;; :plugins [[cider/cider-nrepl "0.12.0"]]
                    :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
                    ;; need to add the compliled assets to the :clean-targets
-                   :clean-targets ^{:protect false} ["resources/public/js/compiled"
-                                                     :target-path]}})
+                   :clean-targets ^{:protect false} ["resources/public/js/compiled" "docs/" :target-path]}})
