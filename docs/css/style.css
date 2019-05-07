@@ -1,0 +1,13 @@
+.hoverable > .hover-hidden {
+	display: none;
+}
+
+.hoverable:hover > .hover-hidden {
+	display: inline;
+}
+
+.CodeMirror {
+	height: inherit !important;
+}
+
+

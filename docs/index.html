@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="https://clojurescript.org/images/cljs-logo-icon-32.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css" />
+
+    <script src="js/code-mirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="js/code-mirror/lib/codemirror.css">
+    <script src="js/code-mirror/mode/clojure/clojure.js"></script>
+    <script src="js/code-mirror/keymap/vim.js"></script>
+    <script src="js/code-mirror/keymap/emacs.js"></script>
+
+  </head>
+  <body>
+    <div style="height: 97%" id="app"></div>
+    <script src="js/compiled/trade_repl.js" type="text/javascript"></script>
+    <script>trade_repl.core.main();</script>
+  </body>
+</html>
