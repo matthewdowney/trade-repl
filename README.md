@@ -8,7 +8,7 @@ Check it out [here](http://matthewdowney.github.io/trade-repl).
 
 ## Syntax
 
-The [core.cljs](src/trade_repl/core.cljs) code (the whole things is just one namespace) attempts 
+The [core.cljs](src/trade_repl/core.cljs) code (the whole thing is just one namespace) attempts 
 to parse everything you type into the input box as one of three things:
 
 1. An instruction to evaluate Clojurescript code,

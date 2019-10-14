@@ -7,6 +7,7 @@
                  [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.match "0.3.0"]
                  [funcool/decimal "1.0.2"]
+                 [metasoarous/oz "1.6.0-alpha5"]
                  [org.clojure/core.async  "0.4.474"]
                  [keybind "2.2.0"]
                  [reagent "0.8.1"]]
@@ -100,5 +101,5 @@
                    ;; for CIDER
                    ;; :plugins [[cider/cider-nrepl "0.12.0"]]
                    :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
-                   ;; need to add the compliled assets to the :clean-targets
+                   ;; need to add the compiled assets to the :clean-targets
                    :clean-targets ^{:protect false} ["resources/public/js/compiled" "docs/" :target-path]}})
