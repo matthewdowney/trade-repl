@@ -172,22 +172,22 @@ return decimal.core._decimal.call(null,v).isZero();
  *   the value of x, otherwise returns false.
  */
 decimal.core._LT_ = (function decimal$core$_LT_(var_args){
-var G__33747 = arguments.length;
-switch (G__33747) {
+var G__27763 = arguments.length;
+switch (G__27763) {
 case 2:
 return decimal.core._LT_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33749 = arguments.length;
-var i__4500__auto___33750 = (0);
+var len__4499__auto___27765 = arguments.length;
+var i__4500__auto___27766 = (0);
 while(true){
-if((i__4500__auto___33750 < len__4499__auto___33749)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33750]));
+if((i__4500__auto___27766 < len__4499__auto___27765)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27766]));
 
-var G__33751 = (i__4500__auto___33750 + (1));
-i__4500__auto___33750 = G__33751;
+var G__27767 = (i__4500__auto___27766 + (1));
+i__4500__auto___27766 = G__27767;
 continue;
 } else {
 }
@@ -208,12 +208,12 @@ decimal.core._LT_.cljs$core$IFn$_invoke$arity$variadic = (function (v,x,more){
 while(true){
 if(decimal.core._LT_.call(null,v,x)){
 if(cljs.core.next.call(null,more)){
-var G__33752 = x;
-var G__33753 = cljs.core.first.call(null,more);
-var G__33754 = cljs.core.next.call(null,more);
-v = G__33752;
-x = G__33753;
-more = G__33754;
+var G__27768 = x;
+var G__27769 = cljs.core.first.call(null,more);
+var G__27770 = cljs.core.next.call(null,more);
+v = G__27768;
+x = G__27769;
+more = G__27770;
 continue;
 } else {
 return decimal.core._LT_.call(null,x,cljs.core.first.call(null,more));
@@ -226,13 +226,13 @@ break;
 });
 
 /** @this {Function} */
-decimal.core._LT_.cljs$lang$applyTo = (function (seq33744){
-var G__33745 = cljs.core.first.call(null,seq33744);
-var seq33744__$1 = cljs.core.next.call(null,seq33744);
-var G__33746 = cljs.core.first.call(null,seq33744__$1);
-var seq33744__$2 = cljs.core.next.call(null,seq33744__$1);
+decimal.core._LT_.cljs$lang$applyTo = (function (seq27760){
+var G__27761 = cljs.core.first.call(null,seq27760);
+var seq27760__$1 = cljs.core.next.call(null,seq27760);
+var G__27762 = cljs.core.first.call(null,seq27760__$1);
+var seq27760__$2 = cljs.core.next.call(null,seq27760__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33745,G__33746,seq33744__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27761,G__27762,seq27760__$2);
 });
 
 decimal.core._LT_.cljs$lang$maxFixedArity = (2);
@@ -242,22 +242,22 @@ decimal.core._LT_.cljs$lang$maxFixedArity = (2);
  *   or equal to the value of x, otherwise returns false.
  */
 decimal.core._LT__EQ_ = (function decimal$core$_LT__EQ_(var_args){
-var G__33759 = arguments.length;
-switch (G__33759) {
+var G__27775 = arguments.length;
+switch (G__27775) {
 case 2:
 return decimal.core._LT__EQ_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33761 = arguments.length;
-var i__4500__auto___33762 = (0);
+var len__4499__auto___27777 = arguments.length;
+var i__4500__auto___27778 = (0);
 while(true){
-if((i__4500__auto___33762 < len__4499__auto___33761)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33762]));
+if((i__4500__auto___27778 < len__4499__auto___27777)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27778]));
 
-var G__33763 = (i__4500__auto___33762 + (1));
-i__4500__auto___33762 = G__33763;
+var G__27779 = (i__4500__auto___27778 + (1));
+i__4500__auto___27778 = G__27779;
 continue;
 } else {
 }
@@ -278,12 +278,12 @@ decimal.core._LT__EQ_.cljs$core$IFn$_invoke$arity$variadic = (function (v,x,more
 while(true){
 if(decimal.core._LT__EQ_.call(null,v,x)){
 if(cljs.core.next.call(null,more)){
-var G__33764 = x;
-var G__33765 = cljs.core.first.call(null,more);
-var G__33766 = cljs.core.next.call(null,more);
-v = G__33764;
-x = G__33765;
-more = G__33766;
+var G__27780 = x;
+var G__27781 = cljs.core.first.call(null,more);
+var G__27782 = cljs.core.next.call(null,more);
+v = G__27780;
+x = G__27781;
+more = G__27782;
 continue;
 } else {
 return decimal.core._LT__EQ_.call(null,x,cljs.core.first.call(null,more));
@@ -296,13 +296,13 @@ break;
 });
 
 /** @this {Function} */
-decimal.core._LT__EQ_.cljs$lang$applyTo = (function (seq33756){
-var G__33757 = cljs.core.first.call(null,seq33756);
-var seq33756__$1 = cljs.core.next.call(null,seq33756);
-var G__33758 = cljs.core.first.call(null,seq33756__$1);
-var seq33756__$2 = cljs.core.next.call(null,seq33756__$1);
+decimal.core._LT__EQ_.cljs$lang$applyTo = (function (seq27772){
+var G__27773 = cljs.core.first.call(null,seq27772);
+var seq27772__$1 = cljs.core.next.call(null,seq27772);
+var G__27774 = cljs.core.first.call(null,seq27772__$1);
+var seq27772__$2 = cljs.core.next.call(null,seq27772__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33757,G__33758,seq33756__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27773,G__27774,seq27772__$2);
 });
 
 decimal.core._LT__EQ_.cljs$lang$maxFixedArity = (2);
@@ -312,22 +312,22 @@ decimal.core._LT__EQ_.cljs$lang$maxFixedArity = (2);
  *   the value of x, otherwise returns false.
  */
 decimal.core._GT_ = (function decimal$core$_GT_(var_args){
-var G__33771 = arguments.length;
-switch (G__33771) {
+var G__27787 = arguments.length;
+switch (G__27787) {
 case 2:
 return decimal.core._GT_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33773 = arguments.length;
-var i__4500__auto___33774 = (0);
+var len__4499__auto___27789 = arguments.length;
+var i__4500__auto___27790 = (0);
 while(true){
-if((i__4500__auto___33774 < len__4499__auto___33773)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33774]));
+if((i__4500__auto___27790 < len__4499__auto___27789)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27790]));
 
-var G__33775 = (i__4500__auto___33774 + (1));
-i__4500__auto___33774 = G__33775;
+var G__27791 = (i__4500__auto___27790 + (1));
+i__4500__auto___27790 = G__27791;
 continue;
 } else {
 }
@@ -348,12 +348,12 @@ decimal.core._GT_.cljs$core$IFn$_invoke$arity$variadic = (function (v,x,more){
 while(true){
 if(decimal.core._GT_.call(null,v,x)){
 if(cljs.core.next.call(null,more)){
-var G__33776 = x;
-var G__33777 = cljs.core.first.call(null,more);
-var G__33778 = cljs.core.next.call(null,more);
-v = G__33776;
-x = G__33777;
-more = G__33778;
+var G__27792 = x;
+var G__27793 = cljs.core.first.call(null,more);
+var G__27794 = cljs.core.next.call(null,more);
+v = G__27792;
+x = G__27793;
+more = G__27794;
 continue;
 } else {
 return decimal.core._GT_.call(null,x,cljs.core.first.call(null,more));
@@ -366,13 +366,13 @@ break;
 });
 
 /** @this {Function} */
-decimal.core._GT_.cljs$lang$applyTo = (function (seq33768){
-var G__33769 = cljs.core.first.call(null,seq33768);
-var seq33768__$1 = cljs.core.next.call(null,seq33768);
-var G__33770 = cljs.core.first.call(null,seq33768__$1);
-var seq33768__$2 = cljs.core.next.call(null,seq33768__$1);
+decimal.core._GT_.cljs$lang$applyTo = (function (seq27784){
+var G__27785 = cljs.core.first.call(null,seq27784);
+var seq27784__$1 = cljs.core.next.call(null,seq27784);
+var G__27786 = cljs.core.first.call(null,seq27784__$1);
+var seq27784__$2 = cljs.core.next.call(null,seq27784__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33769,G__33770,seq33768__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27785,G__27786,seq27784__$2);
 });
 
 decimal.core._GT_.cljs$lang$maxFixedArity = (2);
@@ -382,22 +382,22 @@ decimal.core._GT_.cljs$lang$maxFixedArity = (2);
  *   or equal to the value of x, otherwise returns false.
  */
 decimal.core._GT__EQ_ = (function decimal$core$_GT__EQ_(var_args){
-var G__33783 = arguments.length;
-switch (G__33783) {
+var G__27799 = arguments.length;
+switch (G__27799) {
 case 2:
 return decimal.core._GT__EQ_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33785 = arguments.length;
-var i__4500__auto___33786 = (0);
+var len__4499__auto___27801 = arguments.length;
+var i__4500__auto___27802 = (0);
 while(true){
-if((i__4500__auto___33786 < len__4499__auto___33785)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33786]));
+if((i__4500__auto___27802 < len__4499__auto___27801)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27802]));
 
-var G__33787 = (i__4500__auto___33786 + (1));
-i__4500__auto___33786 = G__33787;
+var G__27803 = (i__4500__auto___27802 + (1));
+i__4500__auto___27802 = G__27803;
 continue;
 } else {
 }
@@ -418,12 +418,12 @@ decimal.core._GT__EQ_.cljs$core$IFn$_invoke$arity$variadic = (function (v,x,more
 while(true){
 if(decimal.core._GT__EQ_.call(null,v,x)){
 if(cljs.core.next.call(null,more)){
-var G__33788 = x;
-var G__33789 = cljs.core.first.call(null,more);
-var G__33790 = cljs.core.next.call(null,more);
-v = G__33788;
-x = G__33789;
-more = G__33790;
+var G__27804 = x;
+var G__27805 = cljs.core.first.call(null,more);
+var G__27806 = cljs.core.next.call(null,more);
+v = G__27804;
+x = G__27805;
+more = G__27806;
 continue;
 } else {
 return decimal.core._GT__EQ_.call(null,x,cljs.core.first.call(null,more));
@@ -436,13 +436,13 @@ break;
 });
 
 /** @this {Function} */
-decimal.core._GT__EQ_.cljs$lang$applyTo = (function (seq33780){
-var G__33781 = cljs.core.first.call(null,seq33780);
-var seq33780__$1 = cljs.core.next.call(null,seq33780);
-var G__33782 = cljs.core.first.call(null,seq33780__$1);
-var seq33780__$2 = cljs.core.next.call(null,seq33780__$1);
+decimal.core._GT__EQ_.cljs$lang$applyTo = (function (seq27796){
+var G__27797 = cljs.core.first.call(null,seq27796);
+var seq27796__$1 = cljs.core.next.call(null,seq27796);
+var G__27798 = cljs.core.first.call(null,seq27796__$1);
+var seq27796__$2 = cljs.core.next.call(null,seq27796__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33781,G__33782,seq33780__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27797,G__27798,seq27796__$2);
 });
 
 decimal.core._GT__EQ_.cljs$lang$maxFixedArity = (2);
@@ -452,22 +452,22 @@ decimal.core._GT__EQ_.cljs$lang$maxFixedArity = (2);
  *   value of x, otherwise returns false.
  */
 decimal.core._EQ_ = (function decimal$core$_EQ_(var_args){
-var G__33795 = arguments.length;
-switch (G__33795) {
+var G__27811 = arguments.length;
+switch (G__27811) {
 case 2:
 return decimal.core._EQ_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33797 = arguments.length;
-var i__4500__auto___33798 = (0);
+var len__4499__auto___27813 = arguments.length;
+var i__4500__auto___27814 = (0);
 while(true){
-if((i__4500__auto___33798 < len__4499__auto___33797)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33798]));
+if((i__4500__auto___27814 < len__4499__auto___27813)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27814]));
 
-var G__33799 = (i__4500__auto___33798 + (1));
-i__4500__auto___33798 = G__33799;
+var G__27815 = (i__4500__auto___27814 + (1));
+i__4500__auto___27814 = G__27815;
 continue;
 } else {
 }
@@ -488,12 +488,12 @@ decimal.core._EQ_.cljs$core$IFn$_invoke$arity$variadic = (function (v,x,more){
 while(true){
 if(decimal.core._GT__EQ_.call(null,v,x)){
 if(cljs.core.next.call(null,more)){
-var G__33800 = x;
-var G__33801 = cljs.core.first.call(null,more);
-var G__33802 = cljs.core.next.call(null,more);
-v = G__33800;
-x = G__33801;
-more = G__33802;
+var G__27816 = x;
+var G__27817 = cljs.core.first.call(null,more);
+var G__27818 = cljs.core.next.call(null,more);
+v = G__27816;
+x = G__27817;
+more = G__27818;
 continue;
 } else {
 return decimal.core._GT__EQ_.call(null,x,cljs.core.first.call(null,more));
@@ -506,13 +506,13 @@ break;
 });
 
 /** @this {Function} */
-decimal.core._EQ_.cljs$lang$applyTo = (function (seq33792){
-var G__33793 = cljs.core.first.call(null,seq33792);
-var seq33792__$1 = cljs.core.next.call(null,seq33792);
-var G__33794 = cljs.core.first.call(null,seq33792__$1);
-var seq33792__$2 = cljs.core.next.call(null,seq33792__$1);
+decimal.core._EQ_.cljs$lang$applyTo = (function (seq27808){
+var G__27809 = cljs.core.first.call(null,seq27808);
+var seq27808__$1 = cljs.core.next.call(null,seq27808);
+var G__27810 = cljs.core.first.call(null,seq27808__$1);
+var seq27808__$2 = cljs.core.next.call(null,seq27808__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33793,G__33794,seq33792__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27809,G__27810,seq27808__$2);
 });
 
 decimal.core._EQ_.cljs$lang$maxFixedArity = (2);
@@ -566,8 +566,8 @@ return decimal.core._decimal.call(null,v).divToInt(x);
  * Returns a new Decimal whose value is the maximum.
  */
 decimal.core.max = (function decimal$core$max(var_args){
-var G__33807 = arguments.length;
-switch (G__33807) {
+var G__27823 = arguments.length;
+switch (G__27823) {
 case 1:
 return decimal.core.max.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -578,14 +578,14 @@ return decimal.core.max.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(argument
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33809 = arguments.length;
-var i__4500__auto___33810 = (0);
+var len__4499__auto___27825 = arguments.length;
+var i__4500__auto___27826 = (0);
 while(true){
-if((i__4500__auto___33810 < len__4499__auto___33809)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33810]));
+if((i__4500__auto___27826 < len__4499__auto___27825)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27826]));
 
-var G__33811 = (i__4500__auto___33810 + (1));
-i__4500__auto___33810 = G__33811;
+var G__27827 = (i__4500__auto___27826 + (1));
+i__4500__auto___27826 = G__27827;
 continue;
 } else {
 }
@@ -617,13 +617,13 @@ return cljs.core.reduce.call(null,decimal.core.max,decimal.core.max.call(null,a,
 });
 
 /** @this {Function} */
-decimal.core.max.cljs$lang$applyTo = (function (seq33804){
-var G__33805 = cljs.core.first.call(null,seq33804);
-var seq33804__$1 = cljs.core.next.call(null,seq33804);
-var G__33806 = cljs.core.first.call(null,seq33804__$1);
-var seq33804__$2 = cljs.core.next.call(null,seq33804__$1);
+decimal.core.max.cljs$lang$applyTo = (function (seq27820){
+var G__27821 = cljs.core.first.call(null,seq27820);
+var seq27820__$1 = cljs.core.next.call(null,seq27820);
+var G__27822 = cljs.core.first.call(null,seq27820__$1);
+var seq27820__$2 = cljs.core.next.call(null,seq27820__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33805,G__33806,seq33804__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27821,G__27822,seq27820__$2);
 });
 
 decimal.core.max.cljs$lang$maxFixedArity = (2);
@@ -632,8 +632,8 @@ decimal.core.max.cljs$lang$maxFixedArity = (2);
  * Returns a new Decimal whose value is the minimum.
  */
 decimal.core.min = (function decimal$core$min(var_args){
-var G__33816 = arguments.length;
-switch (G__33816) {
+var G__27832 = arguments.length;
+switch (G__27832) {
 case 1:
 return decimal.core.min.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -644,14 +644,14 @@ return decimal.core.min.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(argument
 break;
 default:
 var args_arr__4514__auto__ = [];
-var len__4499__auto___33818 = arguments.length;
-var i__4500__auto___33819 = (0);
+var len__4499__auto___27834 = arguments.length;
+var i__4500__auto___27835 = (0);
 while(true){
-if((i__4500__auto___33819 < len__4499__auto___33818)){
-args_arr__4514__auto__.push((arguments[i__4500__auto___33819]));
+if((i__4500__auto___27835 < len__4499__auto___27834)){
+args_arr__4514__auto__.push((arguments[i__4500__auto___27835]));
 
-var G__33820 = (i__4500__auto___33819 + (1));
-i__4500__auto___33819 = G__33820;
+var G__27836 = (i__4500__auto___27835 + (1));
+i__4500__auto___27835 = G__27836;
 continue;
 } else {
 }
@@ -683,13 +683,13 @@ return cljs.core.reduce.call(null,decimal.core.min,decimal.core.min.call(null,a,
 });
 
 /** @this {Function} */
-decimal.core.min.cljs$lang$applyTo = (function (seq33813){
-var G__33814 = cljs.core.first.call(null,seq33813);
-var seq33813__$1 = cljs.core.next.call(null,seq33813);
-var G__33815 = cljs.core.first.call(null,seq33813__$1);
-var seq33813__$2 = cljs.core.next.call(null,seq33813__$1);
+decimal.core.min.cljs$lang$applyTo = (function (seq27829){
+var G__27830 = cljs.core.first.call(null,seq27829);
+var seq27829__$1 = cljs.core.next.call(null,seq27829);
+var G__27831 = cljs.core.first.call(null,seq27829__$1);
+var seq27829__$2 = cljs.core.next.call(null,seq27829__$1);
 var self__4486__auto__ = this;
-return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__33814,G__33815,seq33813__$2);
+return self__4486__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27830,G__27831,seq27829__$2);
 });
 
 decimal.core.min.cljs$lang$maxFixedArity = (2);
@@ -830,8 +830,8 @@ return decimal.core._decimal.call(null,v).squareRoot();
  *   this Decimal will be returned.
  */
 decimal.core.log = (function decimal$core$log(var_args){
-var G__33822 = arguments.length;
-switch (G__33822) {
+var G__27838 = arguments.length;
+switch (G__27838) {
 case 1:
 return decimal.core.log.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -909,14 +909,14 @@ return decimal.core._decimal.call(null,v).naturalLogarithm();
  */
 decimal.core.hypot = (function decimal$core$hypot(var_args){
 var args__4502__auto__ = [];
-var len__4499__auto___33825 = arguments.length;
-var i__4500__auto___33826 = (0);
+var len__4499__auto___27841 = arguments.length;
+var i__4500__auto___27842 = (0);
 while(true){
-if((i__4500__auto___33826 < len__4499__auto___33825)){
-args__4502__auto__.push((arguments[i__4500__auto___33826]));
+if((i__4500__auto___27842 < len__4499__auto___27841)){
+args__4502__auto__.push((arguments[i__4500__auto___27842]));
 
-var G__33827 = (i__4500__auto___33826 + (1));
-i__4500__auto___33826 = G__33827;
+var G__27843 = (i__4500__auto___27842 + (1));
+i__4500__auto___27842 = G__27843;
 continue;
 } else {
 }
@@ -934,9 +934,9 @@ return decimal.core._STAR_decimal_STAR_.hypot.apply(decimal.core._STAR_decimal_S
 decimal.core.hypot.cljs$lang$maxFixedArity = (0);
 
 /** @this {Function} */
-decimal.core.hypot.cljs$lang$applyTo = (function (seq33824){
+decimal.core.hypot.cljs$lang$applyTo = (function (seq27840){
 var self__4487__auto__ = this;
-return self__4487__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq33824));
+return self__4487__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq27840));
 });
 
 /**
@@ -977,8 +977,8 @@ return decimal.core._decimal.call(null,v).truncated();
  *   part will be included in the counter of significant digits.
  */
 decimal.core.precision = (function decimal$core$precision(var_args){
-var G__33829 = arguments.length;
-switch (G__33829) {
+var G__27845 = arguments.length;
+switch (G__27845) {
 case 1:
 return decimal.core.precision.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1017,8 +1017,8 @@ return decimal.core._STAR_decimal_STAR_.sign(v);
  *   digits. If `rm` is omitted, default rounding mode will be used.
  */
 decimal.core.to_binary = (function decimal$core$to_binary(var_args){
-var G__33832 = arguments.length;
-switch (G__33832) {
+var G__27848 = arguments.length;
+switch (G__27848) {
 case 1:
 return decimal.core.to_binary.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1070,8 +1070,8 @@ decimal.core.to_binary.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `dp` or `rm` value.
  */
 decimal.core.to_exponential = (function decimal$core$to_exponential(var_args){
-var G__33835 = arguments.length;
-switch (G__33835) {
+var G__27851 = arguments.length;
+switch (G__27851) {
 case 1:
 return decimal.core.to_exponential.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1128,8 +1128,8 @@ decimal.core.to_exponential.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `dp` or `rm` value.
  */
 decimal.core.to_fixed = (function decimal$core$to_fixed(var_args){
-var G__33838 = arguments.length;
-switch (G__33838) {
+var G__27854 = arguments.length;
+switch (G__27854) {
 case 1:
 return decimal.core.to_fixed.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1178,8 +1178,8 @@ decimal.core.to_fixed.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `sd` or `rm` value.
  */
 decimal.core.to_octal = (function decimal$core$to_octal(var_args){
-var G__33841 = arguments.length;
-switch (G__33841) {
+var G__27857 = arguments.length;
+switch (G__27857) {
 case 1:
 return decimal.core.to_octal.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1228,8 +1228,8 @@ decimal.core.to_octal.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `sd` or `rm` value.
  */
 decimal.core.to_hex = (function decimal$core$to_hex(var_args){
-var G__33844 = arguments.length;
-switch (G__33844) {
+var G__27860 = arguments.length;
+switch (G__27860) {
 case 1:
 return decimal.core.to_hex.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1303,8 +1303,8 @@ return decimal.core._decimal.call(null,v).valueOf();
  *   Throws on an invalid `sd` or `rm` value.
  */
 decimal.core.to_precision = (function decimal$core$to_precision(var_args){
-var G__33847 = arguments.length;
-switch (G__33847) {
+var G__27863 = arguments.length;
+switch (G__27863) {
 case 1:
 return decimal.core.to_precision.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1349,8 +1349,8 @@ decimal.core.to_precision.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `sd` or `rm` value.
  */
 decimal.core.to_significant_digits = (function decimal$core$to_significant_digits(var_args){
-var G__33850 = arguments.length;
-switch (G__33850) {
+var G__27866 = arguments.length;
+switch (G__27866) {
 case 1:
 return decimal.core.to_significant_digits.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1395,8 +1395,8 @@ decimal.core.to_significant_digits.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `dp` or `rm` value.
  */
 decimal.core.to_decimal_places = (function decimal$core$to_decimal_places(var_args){
-var G__33853 = arguments.length;
-switch (G__33853) {
+var G__27869 = arguments.length;
+switch (G__27869) {
 case 1:
 return decimal.core.to_decimal_places.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1441,8 +1441,8 @@ decimal.core.to_decimal_places.cljs$lang$maxFixedArity = 3;
  *   Throws on an invalid `max_denominator` value.
  */
 decimal.core.to_fraction = (function decimal$core$to_fraction(var_args){
-var G__33856 = arguments.length;
-switch (G__33856) {
+var G__27872 = arguments.length;
+switch (G__27872) {
 case 1:
 return decimal.core.to_fraction.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -1498,8 +1498,8 @@ return decimal.core._decimal.call(null,v).toPower(x);
  *   The return value is not affected by the value of the `precision` setting.
  */
 decimal.core.to_nearest = (function decimal$core$to_nearest(var_args){
-var G__33859 = arguments.length;
-switch (G__33859) {
+var G__27875 = arguments.length;
+switch (G__27875) {
 case 2:
 return decimal.core.to_nearest.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 

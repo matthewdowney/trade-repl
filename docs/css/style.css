@@ -10,4 +10,11 @@
 	height: inherit !important;
 }
 
+p {
+	font-size: 1.5rem;
+}
+
+pre code {
+	border: none;
+}
 
