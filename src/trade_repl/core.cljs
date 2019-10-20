@@ -45,7 +45,10 @@
   (let [styles {:container {:width "100%" :height "100%"
                             :padding "0px" :display "inline-flex"}
                 :editor {:margin "0px" :width "750px" :height "100%"}
-                :display {:padding "30px" :width "950px" :height "100%"}}]
+                :display {:padding "30px"
+                          :padding-bottom "0px"
+                          :height "100%"
+                          :overflow-y "scroll"}}]
     [:div {:style (:container styles)}
      [editor/editor editor-text #(reset! editor-text %) (:editor styles)]
      [display/render @editor-text (:display styles) dsl-constructors]]))

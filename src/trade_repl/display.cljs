@@ -149,12 +149,11 @@
   [input-text style dsl-constructors]
   (let [constructed (atom nil)]
     (fn [input-text style dsl-constructors]
-      [:div
-       [:div {:style style}
-        (for [block (split-input input-text)
-              :let [uid (if (= (:type block) ::markdown)
-                          (:name block)
-                          (str (:name block) "-" (count (:lines block))))]]
-          (if (= (:type block) ::markdown)
-            ^{:key uid} (markdown (string/join "\n" (:lines block)))
-            ^{:key uid} (dsl-render block constructed dsl-constructors)))]])))
+      [:div {:style style}
+       (for [block (split-input input-text)
+             :let [uid (if (= (:type block) ::markdown)
+                         (:name block)
+                         (str (:name block) "-" (count (:lines block))))]]
+         (if (= (:type block) ::markdown)
+           ^{:key uid} (markdown (string/join "\n" (:lines block)))
+           ^{:key uid} (dsl-render block constructed dsl-constructors)))])))

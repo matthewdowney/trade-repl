@@ -9,6 +9,7 @@
 
 
 (defprotocol Exposure
+  (market [this])
   (deltas [this context])
   (describe [this context]))
 
@@ -20,6 +21,9 @@
 
 (defrecord SpotPosition [direction quantity price]
   Exposure
+  (market [this]
+    (str (second quantity) "-" (second price)))
+
   (deltas [this context]
     ;; We don't need market context to figure out the deltas for a spot position
     (let [[q base] quantity
@@ -45,6 +49,9 @@
 
 (defrecord OptionPosition [direction type contracts premium strike]
   Exposure
+  (market [this]
+    (str (second contracts) "-" (second strike)))
+
   (deltas [this context]
     (let [[stk counter] strike
           [qty base] contracts
@@ -194,10 +201,16 @@
 (defn parse-trade-line [line]
   (when-let [parsed (try (line->trade line) (catch :default _ nil))]
     (let [venue (some-> (re-find #"ON (\S+)" (string/upper-case line)) last string/capitalize)
-          future-pair (future-pair? (:base parsed) (:counter parsed))]
-      (cond-> (assoc parsed :venue venue :contract (:counter parsed))
-              (some? future-pair)
-              (assoc :base (:underlying future-pair) :counter (:settle future-pair))))))
+          future-pair (future-pair? (:base parsed) (:counter parsed))
+          {:keys [action qty price base counter]}
+          (cond-> (assoc parsed :venue venue :contract (:counter parsed))
+                  (some? future-pair)
+                  (assoc :base (:underlying future-pair)
+                         :counter (:settle future-pair)))]
+      (->SpotPosition
+        (case action :buy :long :sell :short)
+        [qty base]
+        [price counter]))))
 
 (defn trade->display
   "Display a trade by showing the position deltas it causes."

@@ -27,10 +27,12 @@
       nil)))
 
 (defn get-domain
-  [options domain]
-  (let [strike (comp first :strike)
-        min-strike (dc/to-number (apply min (map strike options)))
-        max-strike (dc/to-number (apply max (map strike options)))
+  [exposures domain]
+  (let [price (fn [x] (or (first (:strike x)) (first (:price x))))
+        min-strike (dc/to-number (apply min (map price exposures)))
+        max-strike (dc/to-number (apply max (map price exposures)))
+        ;; Honestly no clue why this is necessary
+        [min-strike max-strike] (sort [min-strike max-strike])
         rng (/ (swap! domain #(or % 15)) 100.00)]
     [(max 0 (* min-strike (- 1 rng))) (* max-strike (inc rng))]))
 
@@ -54,20 +56,27 @@
      (str "Domain of min/max strike price -/+ "
           @domain "%: [" (gstring/format "%.2f" min') ", " (gstring/format "%.2f" max') "]")]))
 
-(defn option-underlying [{:keys [contracts strike]}]
-  (str (second contracts) "-" (second strike)))
-
 (defn concise [item]
   (if (#{:put :call} (:type item))
     (let [{:keys [direction type contracts strike]} item]
-      (str (case direction :long "" :short "(write) ")
-           (first contracts) " " (name type) "s @ " (first strike)))
+      (str (case direction :long "" :short "(Write) ")
+           (first contracts) " " (string/capitalize (name type)) "s @ " (first strike)))
     (pos/describe item {})))
+
+(defn value-exposure [exposure base counter context]
+  (->> (pos/deltas exposure context)
+       (map
+         (fn [[unit n]]
+           (cond
+             (= unit base) (* n (get context (str base "-" counter)))
+             (= unit counter) n
+             :else 0)))
+       (apply +)))
 
 (defn options-table
   [options domain n-bins]
   (let [[min-price max-price] (get-domain options domain)
-        underlying (option-underlying (first options))
+        underlying (pos/market (first options))
         [base counter] (string/split underlying #"-")
         ctx (fn [p] {underlying (dc/decimal p)})]
     [:div
@@ -75,13 +84,16 @@
      (domain-slider options domain)
      (disp/table
        (for [price (range min-price max-price (/ (- max-price min-price) n-bins))]
-         (-> {(str underlying " Price") price}
-             (into (for [o options] [(concise o) (pos/deltas o (ctx price))]))
-             (assoc "Total" (apply merge-with + (for [o options] (pos/deltas o (ctx price)))))))
+         (-> {(str underlying " Price") price "Base" base "Counter" counter}
+             (into (for [o options :let [deltas (pos/deltas o (ctx price))]]
+                     [(concise o) (zipmap (keys deltas) (map str (vals deltas)))]))
+             (assoc
+               (str counter " Value")
+               (apply + (map #(value-exposure % base counter (ctx price)) options)))))
        {})]))
 
 (defn options-plot [aggregate? options domain]
-  (let [underlying (option-underlying (first options))
+  (let [underlying (pos/market (first options))
         [base counter] (string/split underlying #"-")
         ctx (fn [p] {underlying (dc/decimal p)})
         x-name (str underlying " Price")
@@ -93,12 +105,10 @@
               (for [price (range min-price max-price (/ (- max-price min-price) 100.0))
                     o (if aggregate? [:all] options)]
                 {x-name price
-                 y-name (-> (if (= o :all)
-                              (apply merge-with + (for [o options] (pos/deltas o (ctx price))))
-                              (pos/deltas o (ctx price)))
-                            vals
-                            first)
-                 "series" (if (= o :all) "Portfolio Value" (concise o))})}
+                 y-name (if (= o :all)
+                          (apply + (map #(value-exposure % base counter (ctx price)) options))
+                          (value-exposure o base counter (ctx price)))
+                 "series" (if (= o :all) (str counter " Value") (concise o))})}
        :encoding {:x {:field x-name}
                   :y {:field y-name}
                   :color {:field "series" :type "nominal"}}
@@ -108,17 +118,17 @@
      (domain-slider options domain)]))
 
 (defn renderer [snippet-name]
-  (let [tab-state (r/atom "Portfolio")
+  (let [tab-state (r/atom "Breakdown")
         domain (r/atom nil)]
     (fn [{:keys [lines]}]
-      (when-let [options (->> lines (map #(or (parse-line %) #_(pos/parse-trade-line %))) (filter some?) (seq))]
-        (let [underlying (into #{} (map option-underlying) options)]
+      (when-let [options (->> lines (map #(or (parse-line %) (pos/parse-trade-line %))) (filter some?) (seq))]
+        (let [underlying (into #{} (map pos/market) options)]
           (if-not (= 1 (count underlying))
             (disp/markdown
-              (str "> AssertionError: Options share a single underlying market: " underlying))
+              (str "> AssertionError: Exposures share a single underlying market: " underlying))
             (disp/tabs
               tab-state
-              {"Portfolio" (options-plot true options domain)
-               "Breakdown" (options-plot false options domain)
+              {"Breakdown" (options-plot false options domain)
+               "Totals" (options-plot true options domain)
                "Table" (options-table options domain 10.0)
                "Source" (disp/markdown (str "```\n" (string/join "\n" lines) "\n```\n<br>"))})))))))
