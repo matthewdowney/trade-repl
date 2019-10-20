@@ -5,7 +5,7 @@
             [trade-repl.display :as display]
 
             [trade-repl.dsl.positions :as pos]
-            #_[trade-repl.dsl.payoff :as pay]
+            [trade-repl.dsl.payoff :as pay]
             [trade-repl.dsl.eval :as eval]
 
             [goog.crypt.base64 :as b64]
@@ -39,7 +39,7 @@
    :eval      eval/render-to-string
    :evalf     eval/render-to-html
    :positions pos/block-renderer-factory
-   #_#_:payoff    pay/renderer})
+   :payoff    pay/renderer})
 
 (defn home []
   (let [styles {:container {:width "100%" :height "100%"

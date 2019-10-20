@@ -58,6 +58,6 @@ it's only fair to allow in-browser code evaluation.
   (reductions * (repeat n 2)))
 ```
 
-Careful with that one though — had we supplied it a lazy sequence, say `(repeat 2)`, 
-it would crash the browser.
+Careful with that one though — had we supplied it an infinite sequence, say 
+`(repeat 2)`, it would crash the browser.
 

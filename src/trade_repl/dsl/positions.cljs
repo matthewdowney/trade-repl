@@ -7,6 +7,75 @@
             [clojure.string :as string]
             [trade-repl.display :as display]))
 
+
+(defprotocol Exposure
+  (deltas [this context])
+  (describe [this context]))
+
+(defn- ->s [x]
+  "Todo: Formatting with commas & two decimal places if above 1000, otherwise 8 sig figs"
+  (if (pos? x)
+    (str "+" x)
+    (str x)))
+
+(defrecord SpotPosition [direction quantity price]
+  Exposure
+  (deltas [this context]
+    ;; We don't need market context to figure out the deltas for a spot position
+    (let [[q base] quantity
+          [p counter] price]
+      (case direction
+        :long {base q, counter (* (dc/decimal -1) p q)}
+        :short {base (* (dc/decimal -1) q), counter (* (dc/decimal 1) p q)})))
+
+  (describe [this context]
+    (pprint/cl-format
+      nil "~a ~a ~a/~a @ ~a"
+      (string/capitalize (name direction))
+      (subs (->s (first quantity)) 1)
+      (second quantity)
+      (second price)
+      (subs (->s (first price)) 1))))
+
+(defn- option-value [type strike underlying-price]
+  (let [upside (case type
+                 :call (- underlying-price strike)
+                 :put (- strike underlying-price))]
+    (dc/max (dc/decimal 0) upside)))
+
+(defrecord OptionPosition [direction type contracts premium strike]
+  Exposure
+  (deltas [this context]
+    (let [[stk counter] strike
+          [qty base] contracts
+          market (str base "-" counter)
+          price (get context market)]
+      (assert price (str "There's a price for " market))
+      (let [per-option (option-value type stk price)
+            ;; The option value
+            oval {counter
+                  (* per-option qty
+                     (dc/decimal (case direction :short -1 :long 1)))}
+            ;; The premium value
+            pval {(second premium)
+                  (* (first premium) qty
+                     (dc/decimal (case direction :short 1 :long -1)))}]
+        (merge-with + oval pval))))
+
+  (describe [this context]
+    ;; (Wrote) Put 10 BTC @ strike 6000 USD (for 150 USD)
+    (with-out-str
+      (when (= direction :short)
+        (print "(Wrote) "))
+      (print
+        ;; Put 10 BTC
+        (string/capitalize (name type)) (str (first contracts)) (second contracts)
+        ;; @ strike 6000 USD
+        "@ strike" (str (first strike)) (second strike)
+        ;; (for 150 USD)
+        (str "(for " (str (first premium)) " " (second premium) ")"))
+      (flush))))
+
 ;;;
 ;;; Parsing lines of text input to our trade type, or nil. We're flexible about input conforming
 ;;; to the format, so they can type whatever they want without breaking it, however only valid
@@ -20,12 +89,6 @@
   (match [a]
     [(:or "BUY" "BID" "LONG")] :buy
     [(:or "SELL" "ASK" "SHORT")] :sell))
-
-(defn- ->s [x]
-  "Todo: Formatting with commas & two decimal places if above 1000, otherwise 8 sig figs"
-  (if (pos? x)
-    (str "+" x)
-    (str x)))
 
 (defn- line->trade
   "A text line to maybe a trade object."
@@ -127,6 +190,14 @@
                 {:trade (with-deltas (or (:adjust-trade fee-entry) trade-entry))
                  :fees fee-entry}))
       left)))
+
+(defn parse-trade-line [line]
+  (when-let [parsed (try (line->trade line) (catch :default _ nil))]
+    (let [venue (some-> (re-find #"ON (\S+)" (string/upper-case line)) last string/capitalize)
+          future-pair (future-pair? (:base parsed) (:counter parsed))]
+      (cond-> (assoc parsed :venue venue :contract (:counter parsed))
+              (some? future-pair)
+              (assoc :base (:underlying future-pair) :counter (:settle future-pair))))))
 
 (defn trade->display
   "Display a trade by showing the position deltas it causes."
