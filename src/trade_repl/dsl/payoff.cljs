@@ -84,11 +84,11 @@
      (domain-slider options domain)
      (disp/table
        (for [price (range min-price max-price (/ (- max-price min-price) n-bins))]
-         (-> {(str underlying " Price") price "Base" base "Counter" counter}
+         (-> {(str underlying " Price") price}
              (into (for [o options :let [deltas (pos/deltas o (ctx price))]]
                      [(concise o) (zipmap (keys deltas) (map str (vals deltas)))]))
              (assoc
-               (str counter " Value")
+               (str "Summed " counter " Value")
                (apply + (map #(value-exposure % base counter (ctx price)) options)))))
        {})]))
 

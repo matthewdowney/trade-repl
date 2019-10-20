@@ -1,8 +1,8 @@
-# Welcome to the Trade REPL 
+# Trade Scratchpad
 
-This is a scratchpad & document generator that leverages small ClojureScript 
-DSLs to render dynamic content. I use it for brainstorming and explaining trades 
-with spot products, futures, and options (hosted on 
+This is a client side scratchpad & document generator that leverages small 
+ClojureScript DSLs to render dynamic content. I use it for brainstorming and 
+explaining trades with spot products, futures, and options (hosted on 
 [GitHub](https://github.com/matthewdowney/trade-repl).)
 
 This document serves as a quick tour of the capabilities you can use in addition 
