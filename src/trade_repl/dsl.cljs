@@ -5,6 +5,8 @@
 ;; TODO: Parse-market should return keyword-ized base & counter
 ;; TODO: Construct exposures so that (breakdown) can be called on any of them,
 ;;       and maybe return a more granular list of exposures
+;; TODO: Don't render DSL snippets if the cursor is still inside the block
+;; TODO: Check out the CodeMirror implementation in https://github.com/chr15m/speccy
 (ns trade-repl.dsl
   (:refer-clojure :exclude [long short])
   (:require [cljs.js :refer [eval empty-state js-eval]]
@@ -224,7 +226,7 @@
     market)
 
   (describe [this]
-    (str type-desc " (" n ") on " (name market) " strike=" strike)))
+    (str type-desc " on " (name market) " with strike=" strike)))
 
 (defn put [market {:keys [n price strike] :or {n 1}}]
   (map->Option
@@ -373,11 +375,11 @@
                            (display/auto-keys grouped))]
 
     ;; Persist the tab state across invocations
-    (swap! *context* update :tab-state #(or % (reagent/atom "By Trade")))
+    (swap! *context* update :pos-tab-state #(or % (reagent/atom "By Trade")))
 
     (render
       (display/tabs
-        (:tab-state @*context*)
+        (:pos-tab-state @*context*)
         {"By Trade" (display/table breakdown-cols breakdown)
          "By Market" (display/table grouped-cols grouped)}))))
 
@@ -392,18 +394,19 @@
 
 (defn plot
   [x-range series->y-fn {:keys [x y] :or {x "X" y "Y"}}]
-  [:div
-   [oz/vega-lite
-    {:data {:values (for [x-val x-range, [y-series y-fn] series->y-fn]
-                      {x x-val
-                       y (y-fn x-val)
-                       "series" y-series})}
-     :encoding {:x {:field x}
-                :y {:field y}
-                :color {:field "series" :type "nominal"}}
-     :mark "line"
-     :width 800
-     :height 300}]])
+  (render
+    [:div
+     [oz/vega-lite
+      {:data {:values (for [x-val x-range, [y-series y-fn] series->y-fn]
+                        {x x-val
+                         y (y-fn x-val)
+                         "series" y-series})}
+       :encoding {:x {:field x, "type" "quantitative"}
+                  :y {:field y, "type" "quantitative"}
+                  :color {:field "series" :type "nominal"}}
+       :mark "line"
+       :width 700
+       :height 300}]]))
 
 (defn pnl-range [[context-key context-values] & entries]
   (let [pss (apply build-positions (flatten' entries))
@@ -413,11 +416,11 @@
                        (assoc-in pss [:context context-key] ctx)
                        :usd))}]
     ;; Persist the tab state across invocations
-    (swap! *context* update :tab-state #(or % (reagent/atom "Total PNL")))
+    (swap! *context* update :pnl-tab-state #(or % (reagent/atom "Total PNL")))
 
     (render
       (display/tabs
-        (:tab-state @*context*)
+        (:pnl-tab-state @*context*)
         {"Breakdown" (plot
                        context-values
                        (apply
