@@ -156,11 +156,11 @@
     (swap! dsl-evaluators assoc (:hash paragraph) evaluator)
     [evaluator paragraph]))
 
-(defn render [input-text style eval-factory]
+(defn render [input-text eval-factory]
   (let [dsl-evaluators (atom {})]
-    (fn [input-text style eval-factory]
-      [:div {:style style}
-       (for [paragraph (to-paragraphs input-text)]
+    (fn [input-text eval-factory]
+      [:div
+       (for [paragraph (to-paragraphs @input-text)]
          (if (= (:type paragraph) :markdown)
            ^{:key (:hash paragraph)}
            [:div [markdown (string/join "\n" (:lines paragraph))] [:br]]

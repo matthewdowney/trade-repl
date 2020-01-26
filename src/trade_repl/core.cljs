@@ -27,21 +27,13 @@
         ;; Pull in this file during compilation as a string literal
         (default/file-contents "./resources/readme.md"))))
 
-
-(defn home []
-  (let [styles {:container {:width "100%" :height "100%"
-                            :padding "0px" :display "inline-flex"}
-                :editor {:margin "0px" :width "750px" :height "100%"}
-                :display {:padding "30px"
-                          :padding-bottom "0px"
-                          :height "100%"
-                          :overflow-y "scroll"}}]
-    [:div {:style (:container styles)}
-     [editor/editor editor-text #(reset! editor-text %) (:editor styles)]
-     [display/render @editor-text (:display styles) dsl/dsl-eval-factory]]))
-
 (defn ^:export main []
-  (reagent/render [home] (.getElementById js/document "app")))
+  (reagent/render [editor/editor editor-text #(reset! editor-text %)]
+                  (.getElementById js/document "editor"))
+  (reagent/render [display/render editor-text dsl/dsl-eval-factory]
+                  (.getElementById js/document "display"))
+  (let [loading (.getElementById js/document "loading")]
+    (.removeChild (.-parentNode loading) loading)))
 
 (defn on-js-reload []
   (main))
