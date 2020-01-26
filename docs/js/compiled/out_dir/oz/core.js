@@ -58,10 +58,10 @@ return null;
 oz.core.vega_lite = (function oz$core$vega_lite(spec){
 return reagent.core.create_class.call(null,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"display-name","display-name",694513143),"vega-lite",new cljs.core.Keyword(null,"component-did-mount","component-did-mount",-1126910518),(function (this$){
 return oz.core.render_vega_lite.call(null,spec,reagent.core.dom_node.call(null,this$));
-}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (this$,p__24989){
-var vec__24990 = p__24989;
-var _ = cljs.core.nth.call(null,vec__24990,(0),null);
-var new_spec = cljs.core.nth.call(null,vec__24990,(1),null);
+}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (this$,p__23562){
+var vec__23563 = p__23562;
+var _ = cljs.core.nth.call(null,vec__23563,(0),null);
+var new_spec = cljs.core.nth.call(null,vec__23563,(1),null);
 return oz.core.render_vega_lite.call(null,new_spec,reagent.core.dom_node.call(null,this$));
 }),new cljs.core.Keyword(null,"reagent-render","reagent-render",-985383853),(function (spec__$1){
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div#vis","div#vis",730109291)], null);
@@ -73,10 +73,10 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 oz.core.vega = (function oz$core$vega(spec){
 return reagent.core.create_class.call(null,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"display-name","display-name",694513143),"vega",new cljs.core.Keyword(null,"component-did-mount","component-did-mount",-1126910518),(function (this$){
 return oz.core.render_vega.call(null,spec,reagent.core.dom_node.call(null,this$));
-}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (this$,p__24993){
-var vec__24994 = p__24993;
-var _ = cljs.core.nth.call(null,vec__24994,(0),null);
-var new_spec = cljs.core.nth.call(null,vec__24994,(1),null);
+}),new cljs.core.Keyword(null,"component-will-update","component-will-update",335247566),(function (this$,p__23566){
+var vec__23567 = p__23566;
+var _ = cljs.core.nth.call(null,vec__23567,(0),null);
+var new_spec = cljs.core.nth.call(null,vec__23567,(1),null);
 return oz.core.render_vega.call(null,new_spec,reagent.core.dom_node.call(null,this$));
 }),new cljs.core.Keyword(null,"reagent-render","reagent-render",-985383853),(function (spec__$1){
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div#vis","div#vis",730109291)], null);
@@ -91,9 +91,9 @@ return new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(nu
 return and__3911__auto__;
 }
 })())){
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__24997 = cljs.core.first.call(null,x);
-var G__24997__$1 = (((G__24997 instanceof cljs.core.Keyword))?G__24997.fqn:null);
-switch (G__24997__$1) {
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__23570 = cljs.core.first.call(null,x);
+var G__23570__$1 = (((G__23570 instanceof cljs.core.Keyword))?G__23570.fqn:null);
+switch (G__23570__$1) {
 case "vega":
 return oz.core.vega;
 
@@ -103,7 +103,7 @@ return oz.core.vega_lite;
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__24997__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__23570__$1)].join('')));
 
 }
 })(),cljs.core.reduce.call(null,cljs.core.merge,cljs.core.rest.call(null,x))], null);

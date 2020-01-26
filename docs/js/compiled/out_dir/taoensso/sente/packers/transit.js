@@ -74,8 +74,8 @@ return (new taoensso.sente.packers.transit.TransitPacker(transit_fmt,writer_opts
  * Returns a new TransitPacker
  */
 taoensso.sente.packers.transit.get_transit_packer = (function taoensso$sente$packers$transit$get_transit_packer(var_args){
-var G__24981 = arguments.length;
-switch (G__24981) {
+var G__23554 = arguments.length;
+switch (G__23554) {
 case 0:
 return taoensso.sente.packers.transit.get_transit_packer.cljs$core$IFn$_invoke$arity$0();
 
@@ -103,24 +103,24 @@ return taoensso.sente.packers.transit.get_transit_packer.call(null,transit_fmt,c
 });
 
 taoensso.sente.packers.transit.get_transit_packer.cljs$core$IFn$_invoke$arity$3 = (function (transit_fmt,writer_opts,reader_opts){
-var e_24986 = (function (){try{if((function (x){
+var e_23559 = (function (){try{if((function (x){
 return cljs.core.contains_QMARK_.call(null,taoensso.truss.impl.set_STAR_.call(null,new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"json","json",1279968570),null], null), null)),x);
 }).call(null,transit_fmt)){
 return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e24982){if((e24982 instanceof Error)){
-var e = e24982;
+}catch (e23555){if((e23555 instanceof Error)){
+var e = e23555;
 return e;
 } else {
-throw e24982;
+throw e23555;
 
 }
 }})();
-if((e_24986 == null)){
+if((e_23559 == null)){
 } else {
-taoensso.truss.impl._invar_violation_BANG_.call(null,true,"taoensso.sente.packers.transit",102,"([:el #{:json}] transit-fmt)",transit_fmt,e_24986,null);
+taoensso.truss.impl._invar_violation_BANG_.call(null,true,"taoensso.sente.packers.transit",102,"([:el #{:json}] transit-fmt)",transit_fmt,e_23559,null);
 }
 
 new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var e = (function (){try{if(cljs.core.map_QMARK_.call(null,writer_opts)){
@@ -128,11 +128,11 @@ return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e24983){if((e24983 instanceof Error)){
-var e = e24983;
+}catch (e23556){if((e23556 instanceof Error)){
+var e = e23556;
 return e;
 } else {
-throw e24983;
+throw e23556;
 
 }
 }})();
@@ -146,11 +146,11 @@ return null;
 } else {
 return taoensso.truss.impl._dummy_error;
 }
-}catch (e24984){if((e24984 instanceof Error)){
-var e = e24984;
+}catch (e23557){if((e23557 instanceof Error)){
+var e = e23557;
 return e;
 } else {
-throw e24984;
+throw e23557;
 
 }
 }})();
