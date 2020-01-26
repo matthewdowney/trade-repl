@@ -1,18 +1,39 @@
 # Trade Scratchpad
 
-This is a client side scratchpad, document generator, and lightweight modeling tool
+This is a client side **scratchpad**, document generator, and lightweight modeling tool
 that leverages small ClojureScript DSLs to render dynamic content (hosted on 
 [GitHub](https://github.com/matthewdowney/trade-repl)).
 
-I use it for brainstorming and  explaining trades with spot products, futures, and 
-options. This document serves as a tutorial of the capabilities this scratchpad offers
+I use it for brainstorming and  explaining trades with **spot products, futures, and 
+options**. This document serves as a tutorial of the capabilities this scratchpad offers
 on top of standard markdown.
 
-To get the ball rolling, I'll first include two examples of the type of things you can model, 
-after which the DSL is explained in detail.
+To get the ball rolling, **I'll first include two examples** of the type of things you 
+can model, after which the DSL is explained in detail.
 
-### Example: Triangular Arbitrage
-Arbitrage — the simplest trade of all:
+> You can (and should!) play around with the examples by modifying the source (on the 
+  left).
+
+---
+
+## Contents
+
+- Examples
+  - Triangular Arbitrage
+  - PNL Curve for a Convoluted Trade
+- Expressions
+- Rendering
+- Variable Exposures
+- Plotting Variable Exposures
+- Plotting Options Payoff
+- Custom Plots
+
+---
+
+## Examples
+
+### Triangular Arbitrage
+**Arbitrage** — the simplest trade of all:
 ~~~
 (pos
  ;; Use `buy` and `sell` to represent position changes
@@ -25,12 +46,17 @@ Arbitrage — the simplest trade of all:
  {:eth -20, :usd +8100, "Desc" "Sell eth for usd"})
 ~~~
 
-### Example: PNL Curve for a Convoluted Trade
+### PNL Curve for a Convoluted Trade
 
-For a more advanced example, let's model shorting 50 ETH/USD while buying calls on 
-BTC/USD, with an assumption  that ETH will gain or lose at 1.3x the rate the BTC gains 
-or loses. Tab through the "Breakdown" and "Total PNL" graphs for this nonsensical and
-complex trade:
+For a more advanced example, let's model shorting 50 ETH/USD while **buying calls** on 
+BTC/USD, with the assumption that **ETH will gain or lose at 1.3x the rate the BTC 
+gains or loses**. Tab through the "Breakdown" and "Total PNL" graphs for this 
+nonsensical and complex trade:
+
+> This "trade" is designed to be more convoluted than it is realistic, to show that
+  while this scratchpad is designed to prioritize a **tight mental feedback loop** over
+  capabilities (it's not Excel), dipping in to the DSL allows a certain level of 
+  creativility.
 
 ~~~
 (let [init-prices {:btc 7900 :eth 95}
@@ -54,14 +80,14 @@ complex trade:
 
 From the "Total PNL" tab, we can surmise that the trade is profitable when BTC/USD is 
 priced below $7,400 or above $8,250, and that the PNL increases more rapidly as the 
-price rises.
+price rises than it does as the price falls.
 
 ## Expressions
 
 Expressions written between two lines of `~~~` are **evaluated** and displayed as text.
 
 All [ClojureScript](https://clojurescript.org/) expressions are valid and all of 
-the non-markdown functionality works by combining expressions.
+the non-markdown functionality works by **combining expressions**.
 
 ~~~
 ;; Let's evaluate 3 expressions in a list
@@ -73,8 +99,8 @@ the non-markdown functionality works by combining expressions.
    (reductions * (repeat n 2))))
 ~~~
 
-> Careful with infinite sequences though. `(repeat 2)`, for example, would crash the 
-  browser.
+> Careful with infinite sequences though. `(repeat 2)`, for example, would **crash the 
+  browser**.
 
 
 The embedded DSL has built-in expressions to represent the **position changes** 
@@ -82,6 +108,13 @@ resulting from trades with normal contracts as well as options.
 ~~~
 (buy 1 :eur-usd 1.20)
 ~~~
+
+~~~
+(put :btc-usd {:price 150 :strike 8000})
+~~~
+
+Sometimes the evaluated expressions are useful or interesting in and of themselves, but
+often (as in the case of the `put` option) the expressions are just **building blocks**.
 
 ## Rendering
 
@@ -103,8 +136,8 @@ data, wrap the result in a call to `render`.
 (put-in-a-box "Hello world, I'm a custom rendered piece of HTML.")
 ~~~
 
-The built-in syntax for visualizing positions & exposures work by building hiccup HTML
-from the input expressions and rendering it. 
+**The built-in syntax for visualizing positions & exposures work by building hiccup HTML
+from the input expressions and rendering it.**
 
 You can also nest calls to `render`, so the following is valid:
 ~~~
@@ -116,7 +149,7 @@ You can also nest calls to `render`, so the following is valid:
 ## Variable Exposures
 
 We'll use the `build-context` expression for trades that need more context to analyze, 
-where we might want to see results across a range of possible context values.
+where we might want to see **results across a range** of possible context values.
 
 For example, BitMEX offers an XBTUSD contract worth 1 USD of BTC that quotes in dollar 
 prices, which means your position can only be calculated with regard to the current 
@@ -141,8 +174,8 @@ price of $20,000.
 ~~~
 
 Now, in a simple table, there's really no need to use `build-context` instead of a `let`
-statement, but it comes in handy when it's time to turn a static table into a dynamic
-plot.
+statement, but it comes in handy when it's time to turn a static table into a **dynamic
+plot**.
 
 ## Plotting Variable Exposures
 
@@ -167,14 +200,14 @@ simultaneously going long on a spot exchange:
 That's fun! Obviously had we shorted on another spot exchange, we'd just have a flat
 line at 0 (or whatever the difference in price between our short and long was). By
 tabbing to the "Breakdown", we can see that there is a slight convexity to the XBTUSD
-short that sums with the linear spot position to create the element of positive 
-optionality that we see in the "Total PNL" tab.
+short that sums with the linear spot position to create the element of **positive 
+optionality** that we see in the "Total PNL" tab.
 
 > I wrote out the calculations for the exposure & PNL to demonstrate modeling positions
   that require arbitrary logic, but for this specific case **the DSL includes an 
   `inverse` expression**.
 
-### V. Plotting Options
+## Plotting Options Payoff
 
 Let's model a **call overwrite** trade — here we can see that the call option premium 
 increases the profitability of the long position until the option's strike price, at 
@@ -186,7 +219,7 @@ which point it imposes a maximum on the position's profitability.
  (write-call :btc-usd {:n 2 :price 3050 :strike 10000}))
 ~~~
 
-### VI. Custom Plots
+## Custom Plots
 
 You can use the `plot` function to tune your plots at a more granular level.
 ~~~
@@ -205,3 +238,4 @@ You can use the `plot` function to tune your plots at a more granular level.
  {:x "BTCUSD Price"
   :y "USD Profit"})
 ~~~
+
