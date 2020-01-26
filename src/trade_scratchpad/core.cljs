@@ -1,10 +1,10 @@
-(ns trade-repl.core
+(ns trade-scratchpad.core
   (:require [reagent.core :as reagent]
-            [trade-repl.macros :as default]
-            [trade-repl.editor :as editor]
-            [trade-repl.display :as display]
+            [trade-scratchpad.macros :as default]
+            [trade-scratchpad.editor :as editor]
+            [trade-scratchpad.display :as display]
 
-            [trade-repl.dsl :as dsl]
+            [trade-scratchpad.dsl :as dsl]
 
             [goog.crypt.base64 :as b64]
             [clojure.string :as string]))

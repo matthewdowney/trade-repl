@@ -1,4 +1,4 @@
-(ns trade-repl.editor
+(ns trade-scratchpad.editor
   (:require [reagent.core :as reagent]
             [keybind.core :as k]))
 

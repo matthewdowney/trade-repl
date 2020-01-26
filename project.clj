@@ -1,4 +1,4 @@
-(defproject trade-repl "0.2.0"
+(defproject trade-scratchpad "0.2.0"
   :description "Scratchpad for trading exposures."
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -15,7 +15,7 @@
   :plugins [[lein-figwheel "0.5.16"]
             [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
   :source-paths ["src"]
-  :aliases {"gh-pages" ["run" "-m" "trade-repl.copy"]}
+  :aliases {"gh-pages" ["run" "-m" "trade-scratchpad.copy"]}
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src"]
@@ -23,16 +23,16 @@
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
-                :figwheel {:on-jsload "trade-repl.core/on-js-reload"
+                :figwheel {:on-jsload "trade-scratchpad.core/on-js-reload"
                            ;; :open-urls will pop open your application
                            ;; in the default browser once Figwheel has
                            ;; started and compiled your application.
                            ;; Comment this out once it no longer serves you.
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main trade-repl.core
+                :compiler {:main trade-scratchpad.core
                            :asset-path "js/compiled/out"
-                           :output-to "resources/public/js/compiled/trade_repl.js"
+                           :output-to "resources/public/js/compiled/trade_scratchpad.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
@@ -43,9 +43,9 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:main trade-repl.core
+                :compiler {:main trade-scratchpad.core
                            :asset-path "js/compiled/out_dir"
-                           :output-to "resources/public/js/compiled/trade_repl.js"
+                           :output-to "resources/public/js/compiled/trade_scratchpad.js"
                            :output-dir "resources/public/js/compiled/out_dir"
                            :optimizations :simple
                            :pretty-print false}}]}

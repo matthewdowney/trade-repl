@@ -7,11 +7,11 @@
 ;;       and maybe return a more granular list of exposures
 ;; TODO: Don't render DSL snippets if the cursor is still inside the block
 ;; TODO: Check out the CodeMirror implementation in https://github.com/chr15m/speccy
-(ns trade-repl.dsl
+(ns trade-scratchpad.dsl
   (:refer-clojure :exclude [long short])
   (:require [cljs.js :refer [eval empty-state js-eval]]
             [clojure.string :as string]
-            [trade-repl.display :as display]
+            [trade-scratchpad.display :as display]
             [cljs.reader :as reader]
             [reagent.core :as reagent]
             [clojure.walk :as walk]
@@ -34,7 +34,7 @@
 (defn eval-str [s]
   ;; Prepare the compiler state by loading this namespace
   (let [requires (reader/read-string
-                   (str "(require (quote [trade-repl.dsl :refer "
+                   (str "(require (quote [trade-scratchpad.dsl :refer "
                         (pr-str exposed-fns) " :as dsl]))"))]
     (eval compiler-state requires {:eval js-eval :context :expr} identity))
 

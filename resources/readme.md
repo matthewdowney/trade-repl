@@ -2,7 +2,7 @@
 
 This is a client side **scratchpad**, document generator, and lightweight modeling tool
 that leverages small ClojureScript DSLs to render dynamic content (hosted on 
-[GitHub](https://github.com/matthewdowney/trade-repl)).
+[GitHub](https://github.com/matthewdowney/trade-scratchpad)).
 
 I use it for brainstorming and  explaining trades with **spot products, futures, and 
 options**. This document serves as a tutorial of the capabilities this scratchpad offers

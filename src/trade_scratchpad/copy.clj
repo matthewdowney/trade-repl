@@ -1,4 +1,4 @@
-(ns trade-repl.copy
+(ns trade-scratchpad.copy
   (:require [clojure.java.io :as io]
             [clojure.string :as string]))
 

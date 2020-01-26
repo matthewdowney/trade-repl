@@ -1,4 +1,4 @@
-(ns trade-repl.display
+(ns trade-scratchpad.display
   (:require [clojure.string :as string]))
 
 ;; Generic display components
